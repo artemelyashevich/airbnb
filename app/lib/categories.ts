@@ -1,10 +1,4 @@
-interface ICategory {
-    name: string,
-    title: string,
-    imageUrl: string,
-    description: string,
-    id: number
-}
+import { ICategory } from "../types";
 
 export const categoryItems: ICategory[] = [
     {

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { cn } from "@/lib/utils";
+import { ICategory } from "../types";
 
 export function MapFilterItems() {
     const searchParams = useSearchParams()
@@ -24,7 +25,7 @@ export function MapFilterItems() {
     return (
         <div className="flex gap-x-10 justify-between px-10 mt-5 w-full overflow-x-scroll no-scrollbar">
             {
-                categoryItems.map(category => (
+                categoryItems.map((category: ICategory) => (
                     <Link key={category.id} href={
                         pathname + "?" + createQuery("filter", category.name)
                     } className={
