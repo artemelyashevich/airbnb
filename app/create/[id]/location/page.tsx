@@ -44,8 +44,8 @@ export default function AddressRoute({ params }: { params: { id: string } }) {
                                         getAllCountries().map((item, index: number) => (
                                             <SelectItem key={index} value={item.value}>
                                                 <div className="flex gap-5 items-center">
-                                                    {/* <img className="w-7 h-7" src={`${process.env.FLAG_BASE_URL}${item.value}.svg`} /> */}
-                                                    {item.label} | {item.region}
+                                                    <img className="w-8" src={`https://flagsapi.com/${item.value}/flat/64.png`} alt={item.region} />
+                                                    | {item.region}
                                                 </div>
                                             </SelectItem>
                                         ))

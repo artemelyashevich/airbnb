@@ -1,5 +1,6 @@
 import prisma from "../lib/db";
 import { supabase } from "../lib/supabase";
+import { getFileNameWithoutExtension } from "../utils";
 
 export function findHomeByUserId(userId: string) {
     return prisma.home.findFirst({
@@ -32,40 +33,39 @@ export function updateHomeCategory(formData: FormData) {
     })
 }
 
-export async function updateHomeDescription(formData: FormData, image: any) {
-    const title = String(formData.get("title"))
-    const description = String(formData.get("description"))
-    const price = Number(formData.get("price"))
-    const homeId = String(formData.get("homeId"))
+export async function updateHomeDescription(formData: FormData) {
+    const title = formData.get("title") as string;
+    const description = formData.get("description") as string;
+    const price = formData.get("price");
+    const imageFile = formData.get("image") as File;
+    const homeId = formData.get("homeId") as string;
 
-    const guests = String(formData.get("guests"))
-    const bedrooms = String(formData.get("rooms"))
-    const bathrooms = String(formData.get("bathrooms"))
+    const guestNumber = formData.get("guest") as string;
+    const roomNumber = formData.get("room") as string;
+    const bathroomsNumber = formData.get("bathroom") as string;
 
-    return prisma.home.update({
+    const fileName = `${getFileNameWithoutExtension(imageFile.name)}`.replace(/\s/g, '')
+
+    const { data } = await supabase.storage
+        .from("images")
+        .upload(fileName, imageFile);
+
+    const dataHome = await prisma.home.update({
         where: {
-            id: homeId
+            id: homeId,
         },
         data: {
-            title,
-            description,
-            guests,
-            bedrooms,
-            bathrooms,
-            price,
-            photo: image?.path,
-            addedDescription: true
-        }
+            title: title,
+            description: description,
+            price: Number(price),
+            bedrooms: roomNumber,
+            bathrooms: bathroomsNumber,
+            guests: guestNumber,
+            photo: data?.path,
+            addedDescription: true,
+        },
     })
-}
-
-export async function uploadHomeImage(imageFile: File) {
-    return supabase.storage
-        .from("images")
-        .upload(`${imageFile.name}-${new Date()}`, imageFile, {
-            cacheControl: "2592000",
-            contentType: "image/png"
-        })
+    return dataHome
 }
 
 export async function updateHomeLocation(formData: FormData) {
@@ -78,6 +78,25 @@ export async function updateHomeLocation(formData: FormData) {
         data: {
             addedLocation: true,
             country
+        }
+    })
+}
+
+export async function getAllHomes({ searchParams }: { searchParams?: { filter?: string } }) {
+    return prisma.home.findMany({
+        where: {
+            addedCategory: true,
+            addedDescription: true,
+            addedLocation: true,
+            categoryName: searchParams?.filter ?? undefined
+        },
+        select: {
+            photo: true,
+            id: true,
+            price: true,
+            description: true,
+            title: true,
+            country: true
         }
     })
 }

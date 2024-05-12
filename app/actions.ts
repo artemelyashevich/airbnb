@@ -1,7 +1,7 @@
 "use server"
 
 import { redirect } from "next/navigation"
-import { createHome, findHomeByUserId, updateHomeCategory, updateHomeDescription, updateHomeLocation, uploadHomeImage } from "./repo/home-repo"
+import { createHome, findHomeByUserId, updateHomeCategory, updateHomeDescription, updateHomeLocation } from "./repo/home-repo"
 
 export async function createAirbnbHome({ userId }: { userId: string }) {
     const data = await findHomeByUserId(userId)
@@ -17,6 +17,10 @@ export async function createAirbnbHome({ userId }: { userId: string }) {
     else if (data.addedDescription && !data.addedLocation) {
         return redirect(`/create/${data.id}/location`)
     }
+    else if (data.addedDescription && data.addedLocation && data.addedCategory) {
+        const data = await createHome(userId)
+        return redirect(`/create/${data.id}/structure`)
+    }
 }
 
 export async function setCategory(formData: FormData) {
@@ -28,9 +32,7 @@ export async function setCategory(formData: FormData) {
     @TODO: fix images uploading
 */
 export async function setDescription(formData: FormData) {
-    const imageFile = formData.get("image") as File
-    const { data: image } = await uploadHomeImage(imageFile)
-    const data = await updateHomeDescription(formData, image)
+    const data = await updateHomeDescription(formData)
     return redirect(`/create/${data.id}/location`)
 }
 
