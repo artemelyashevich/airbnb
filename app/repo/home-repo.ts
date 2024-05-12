@@ -1,4 +1,5 @@
 import prisma from "../lib/db";
+import { supabase } from "../lib/supabase";
 
 export function findHomeByUserId(userId: string) {
     return prisma.home.findFirst({
@@ -54,6 +55,29 @@ export async function updateHomeDescription(formData: FormData, image: any) {
             price,
             photo: image?.path,
             addedDescription: true
+        }
+    })
+}
+
+export async function uploadHomeImage(imageFile: File) {
+    return supabase.storage
+        .from("images")
+        .upload(`${imageFile.name}-${new Date()}`, imageFile, {
+            cacheControl: "2592000",
+            contentType: "image/png"
+        })
+}
+
+export async function updateHomeLocation(formData: FormData) {
+    const homeId = String(formData.get("homeId"))
+    const country = String(formData.get("countryValue"))
+    return prisma.home.update({
+        where: {
+            id: homeId
+        },
+        data: {
+            addedLocation: true,
+            country
         }
     })
 }

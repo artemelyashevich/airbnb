@@ -13,7 +13,7 @@ export async function UserNav() {
     const user = await getUser()
 
     const handleCreateHome = createAirbnbHome.bind(null, {
-        userId: user?.id as string 
+        userId: user?.id as string
     })
     return (
         <DropdownMenu>
@@ -32,8 +32,8 @@ export async function UserNav() {
                         ? <>
                             <DropdownMenuItem>
                                 <form action={handleCreateHome} className="w-full">
-                                <button type="submit" 
-                                className="w-full text-start">Airbnb your home</button>
+                                    <button type="submit"
+                                        className="w-full text-start">Airbnb your home</button>
                                 </form>
                             </DropdownMenuItem>
                             {
