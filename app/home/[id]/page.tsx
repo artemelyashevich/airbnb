@@ -1,15 +1,22 @@
+import { setReservation } from "@/app/actions/reservation-actions"
+import { ReservationSubmitButton } from "@/app/components/Creation/SubmitButtons"
 import { CategoryCase } from "@/app/components/Home/CategoryCase"
 import { HomeMap } from "@/app/components/Home/HomeMap"
 import { SelectCalendar } from "@/app/components/Home/SelectCalendar"
 import { useCountries } from "@/app/lib/hooks"
 import { getHomeById } from "@/app/repo/home-repo"
+import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import Image from "next/image"
+import Link from "next/link"
 
 export default async function HomePage({ params }: { params: { id: string } }) {
     const home = await getHomeById(params.id)
     const { getCountryByValue } = useCountries()
     const country = getCountryByValue(home?.country as string)
+    const { getUser } = getKindeServerSession()
+    const user = await getUser()
     return (
         <div className="mx-auto mt-10 w-[75%]">
             <h1 className="font-medium text-2xl mb-5">{home?.title}</h1>
@@ -39,7 +46,24 @@ export default async function HomePage({ params }: { params: { id: string } }) {
                     <Separator className="my-7" />
                     <HomeMap locationValue={country?.value as string} />
                 </div>
-                <SelectCalendar />
+                <form action={setReservation}>
+                    <input type="hidden" name="homeId" value={params.id} />
+                    <input type="hidden" name="userId" value={user?.id} />
+                    <SelectCalendar reservation={home?.Reservation} />
+                    {
+                        user?.id
+                            ? (
+                                <ReservationSubmitButton />
+                            )
+                            : (
+                                <Link className="w-full" href={"/api/auth/login"}>
+                                    <Button className="w-full">
+                                        Make Reservation
+                                    </Button>
+                                </Link>
+                            )
+                    }
+                </form>
             </div>
         </div>
     )

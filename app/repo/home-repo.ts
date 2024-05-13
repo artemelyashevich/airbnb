@@ -157,7 +157,12 @@ export async function getHomeById(homeId: string) {
             guests: true,
             bedrooms: true,
             bathrooms: true,
-            categoryName: true
+            categoryName: true,
+            Reservation: {
+                where: {
+                    homeId: homeId
+                }
+            }
         }
     })
 } 

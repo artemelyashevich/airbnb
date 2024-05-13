@@ -71,3 +71,29 @@ export function UnfavoriteButton() {
         </>
     )
 }
+
+export function ReservationSubmitButton() {
+    const { pending } = useFormStatus()
+    return (
+        <>
+            {
+                pending
+                    ? <Button
+                        variant={"outline"}
+                        size={"icon"}
+                        disabled
+                        className="bg-primary-foreground"
+                    >
+                        <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                    </Button>
+                    : <Button
+                        variant={"outline"}
+                        className="bg-primary-foreground"
+                        type="submit"
+                    >
+                        Make a Reservation
+                    </Button>
+            }
+        </>
+    )
+}
