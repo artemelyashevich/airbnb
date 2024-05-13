@@ -1,3 +1,4 @@
+import { GoTrueAdminApi } from "@supabase/supabase-js";
 import prisma from "../lib/db";
 import { supabase } from "../lib/supabase";
 import { getFileNameWithoutExtension } from "../utils";
@@ -110,6 +111,33 @@ export async function getAllHomes(
                     userId: userId ?? undefined
                 }
             }
+        }
+    })
+}
+
+export async function getHomesByUserId(userId: string) {
+    return prisma.home.findMany({
+        where: {
+            userId: userId,
+            addedCategory: true,
+            addedDescription: true,
+            addedLocation: true
+        },
+        select: {
+            id: true,
+            country: true,
+            photo: true,
+            description: true,
+            price: true,
+            title: true,
+            Favorite: {
+                where: {
+                    userId: userId
+                }
+            }
+        },
+        orderBy: {
+            createdAt: 'desc'
         }
     })
 }
