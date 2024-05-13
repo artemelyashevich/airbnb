@@ -4,9 +4,9 @@ import { LoginLink, LogoutLink, RegisterLink } from "@kinde-oss/kinde-auth-nextj
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
-import { userLinks } from "../lib/user-links";
-import { IUserLink } from "../types";
-import { createAirbnbHome } from "../actions";
+import { userLinks } from "../../lib/user-links";
+import { IUserLink } from "../../types";
+import { createAirbnbHome } from "../../actions/home-actions";
 
 export async function UserNav() {
     const { getUser } = getKindeServerSession()

@@ -1,6 +1,6 @@
-import { setCategory } from "@/app/actions";
-import { BottomBar } from "@/app/components/BottomBar";
-import { SelectedCategory } from "@/app/components/SelectedCategory";
+import { setCategory } from "@/app/actions/home-actions";
+import { BottomBar } from "@/app/components/Creation/BottomBar";
+import { SelectedCategory } from "@/app/components/Creation/SelectedCategory";
 
 export default function StructureRoute({ params }: { params: { id: string } }) {
     return (

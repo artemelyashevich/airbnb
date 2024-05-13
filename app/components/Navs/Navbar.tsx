@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import DeskTopLogo from "../../public/desktop-logo.svg.png"
-import MobileLogo from "../../public/mobile-logo.png"
+import DeskTopLogo from "../../../public/desktop-logo.svg.png"
+import MobileLogo from "../../../public/mobile-logo.png"
 import { UserNav } from "./UserNav";
 
 export function Navbar() {

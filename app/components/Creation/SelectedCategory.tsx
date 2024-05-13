@@ -1,8 +1,8 @@
 "use client"
 
 import { Card, CardHeader } from "@/components/ui/card"
-import { categoryItems } from "../lib/categories"
-import { ICategory } from "../types"
+import { categoryItems } from "../../lib/categories"
+import { ICategory } from "../../types"
 import Image from "next/image"
 import { useState } from "react"
 

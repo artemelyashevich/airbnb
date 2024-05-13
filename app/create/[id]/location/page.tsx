@@ -1,7 +1,7 @@
 "use client"
 
-import { setLocation } from "@/app/actions";
-import { BottomBar } from "@/app/components/BottomBar";
+import { setLocation } from "@/app/actions/home-actions";
+import { BottomBar } from "@/app/components/Creation/BottomBar";
 import { useCountries } from "@/app/lib/hooks";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -11,7 +11,7 @@ import { useState } from "react";
 export default function AddressRoute({ params }: { params: { id: string } }) {
 
     const { getAllCountries } = useCountries()
-    const LazyMap = dynamic(() => import("@/app/components/Map"), {
+    const LazyMap = dynamic(() => import("@/app/components/Creation/Map"), {
         ssr: false,
         loading: () => <Skeleton className="h-[50vh] w-full" />
     })

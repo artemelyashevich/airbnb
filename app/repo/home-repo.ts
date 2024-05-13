@@ -82,13 +82,21 @@ export async function updateHomeLocation(formData: FormData) {
     })
 }
 
-export async function getAllHomes({ searchParams }: { searchParams?: { filter?: string } }) {
+export async function getAllHomes(
+    {
+        searchParams,
+        userId
+    }: {
+        searchParams?: { filter?: string },
+        userId: string | undefined
+    }
+) {
     return prisma.home.findMany({
         where: {
             addedCategory: true,
             addedDescription: true,
             addedLocation: true,
-            categoryName: searchParams?.filter ?? undefined
+            categoryName: searchParams?.filter ?? undefined,
         },
         select: {
             photo: true,
@@ -96,7 +104,12 @@ export async function getAllHomes({ searchParams }: { searchParams?: { filter?: 
             price: true,
             description: true,
             title: true,
-            country: true
+            country: true,
+            Favorite: {
+                where: {
+                    userId: userId ?? undefined
+                }
+            }
         }
     })
 }

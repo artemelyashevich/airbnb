@@ -1,12 +1,12 @@
 "use client"
 
 import Link from "next/link";
-import { categoryItems } from "../lib/categories";
+import { categoryItems } from "../../lib/categories";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { cn } from "@/lib/utils";
-import { ICategory } from "../types";
+import { ICategory } from "../../types";
 
 export function MapFilterItems() {
     const searchParams = useSearchParams()

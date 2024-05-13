@@ -1,7 +1,7 @@
-import { setDescription } from "@/app/actions";
-import { BottomBar } from "@/app/components/BottomBar";
-import { Counter } from "@/app/components/Counter";
-import { DescriptionItem } from "@/app/components/DescriptionItem";
+import { setDescription } from "@/app/actions/home-actions";
+import { BottomBar } from "@/app/components/Creation/BottomBar";
+import { Counter } from "@/app/components/Creation/Counter";
+import { DescriptionItem } from "@/app/components/Creation/DescriptionItem";
 import { descriptionItems } from "@/app/lib/description-items";
 import { updateHomeDescription } from "@/app/repo/home-repo";
 import { Card, CardHeader } from "@/components/ui/card";

@@ -2,7 +2,7 @@
 
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
-import { useCountries } from '../lib/hooks'
+import { useCountries } from '../../lib/hooks'
 import { icon } from 'leaflet'
 
 const ICON = icon({

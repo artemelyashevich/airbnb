@@ -1,13 +1,13 @@
-import { MapFilterItems } from "./components/MapFilterItems";
+import { MapFilterItems } from "./components/Creation/MapFilterItems";
 import { Suspense } from "react";
-import { SkeletonLoading } from "./components/SkeletonLoading";
-import { ShowItems } from "./components/ShowItems";
+import { SkeletonLoading } from "./components/Loading/SkeletonLoading";
+import { ShowItems } from "./components/Home/ShowItems";
 
-export default function Home({ searchParams }: { searchParams?: { filter?: string } }) {
+export default function Home({ searchParams, userId }: { searchParams?: { filter?: string }, userId: string | undefined }) {
   return (
     <div className="mb-5">
       <MapFilterItems />
-      <Suspense key={searchParams?.filter} fallback={<SkeletonLoading />}>
+      <Suspense key={searchParams?.filter} fallback={<SkeletonLoading times={8} />}>
         <ShowItems searchParams={searchParams} />
       </Suspense>
     </div>
