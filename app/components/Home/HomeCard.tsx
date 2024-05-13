@@ -58,7 +58,7 @@ export default function HomeCard({
                     )
                 }
             </div>
-            <Link href={"/"}>
+            <Link href={`/home/${homeId}`}>
                 <h3 className="font-medium text-base flex items-center gap-3">
                     <img className="w-8" src={`https://flagsapi.com/${currCountry?.value}/flat/64.png`} alt={currCountry?.region} /> / {currCountry?.label}
                 </h3>

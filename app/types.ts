@@ -18,5 +18,8 @@ export interface IHome {
     photo: string,
     price: number,
     country?: string,
-    createdAt?: string
+    createdAt?: string,
+    bedrooms?: string,
+    bathrooms?: string,
+    categoryName?: string
 }

@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url       = "postgres://postgres.lqevkukomzxnhmukhrcx:Vycrecbf327@aws-0-eu-central-1.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"
+  url       = "postgres://postgres.lqevkukomzxnhmukhrcx:Vycrecbf327@aws-0-eu-central-1.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1?pgbouncer=true"
   directUrl = "postgres://postgres.lqevkukomzxnhmukhrcx:Vycrecbf327@aws-0-eu-central-1.pooler.supabase.com:5432/postgres"
 }
 

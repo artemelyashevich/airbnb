@@ -141,3 +141,23 @@ export async function getHomesByUserId(userId: string) {
         }
     })
 }
+
+export async function getHomeById(homeId: string) {
+    return prisma.home.findUnique({
+        where: {
+            id: homeId
+        },
+        select: {
+            id: true,
+            country: true,
+            photo: true,
+            description: true,
+            price: true,
+            title: true,
+            guests: true,
+            bedrooms: true,
+            bathrooms: true,
+            categoryName: true
+        }
+    })
+} 
