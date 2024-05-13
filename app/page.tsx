@@ -3,7 +3,18 @@ import { Suspense } from "react";
 import { SkeletonLoading } from "./components/Loading/SkeletonLoading";
 import { ShowItems } from "./components/Home/ShowItems";
 
-export default function Home({ searchParams, userId }: { searchParams?: { filter?: string }, userId: string | undefined }) {
+export default function Home({
+  searchParams
+}: {
+  searchParams?:
+  {
+    filter?: string,
+    country?: string,
+    guests?: string,
+    rooms?: string,
+    bathrooms?: string
+  }
+}) {
   return (
     <div className="mb-5">
       <MapFilterItems />

@@ -88,7 +88,13 @@ export async function getAllHomes(
         searchParams,
         userId
     }: {
-        searchParams?: { filter?: string },
+        searchParams?: {
+            filter?: string,
+            country?: string,
+            guests?: string,
+            rooms?: string,
+            bathrooms?: string
+        },
         userId: string | undefined
     }
 ) {
@@ -98,6 +104,10 @@ export async function getAllHomes(
             addedDescription: true,
             addedLocation: true,
             categoryName: searchParams?.filter ?? undefined,
+            country: searchParams?.country ?? undefined,
+            guests: searchParams?.guests ?? undefined,
+            bedrooms: searchParams?.bathrooms ?? undefined,
+            bathrooms: searchParams?.rooms ?? undefined
         },
         select: {
             photo: true,

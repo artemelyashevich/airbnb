@@ -2,7 +2,17 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { getAllHomes } from "../../repo/home-repo"
 import HomeCard from "./HomeCard"
 
-export async function ShowItems({ searchParams }: { searchParams?: { filter?: string } }) {
+export async function ShowItems({
+    searchParams
+}: {
+    searchParams?: {
+        filter?: string,
+        country?: string,
+        guests?: string,
+        rooms?: string,
+        bathrooms?: string
+    }
+}) {
     const { getUser } = getKindeServerSession()
     const user = await getUser()
     const homes = await getAllHomes({ searchParams: searchParams, userId: user?.id })
