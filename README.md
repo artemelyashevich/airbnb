@@ -23,15 +23,15 @@
 
 ### There are some screens:
 ![alt text](./github/1.png)
-![alt text](./github/2.png)
-![alt text](./github/3.png)
-![alt text](./github/4.png)
-![alt text](./github/5.png)
-![alt text](./github/6.png)
-![alt text](./github/7.png)
-![alt text](./github/8.png)
-![alt text](./github/9.png)
-![alt text](./github/10.png)
+![alt text](./github/2.jpg)
+![alt text](./github/3.jpg)
+![alt text](./github/4.jpg)
+![alt text](./github/5.jpg)
+![alt text](./github/6.jpg)
+![alt text](./github/7.jpg)
+![alt text](./github/8.jpg)
+![alt text](./github/9.jpg)
+![alt text](./github/10.jpg)
 
 ## Getting Started
 ```
