@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { categoryItems } from "../../lib/categories";
 import Image from "next/image";
-import { usePathname, useSearchParams } from "next/navigation";
+import {
+    usePathname,
+    useSearchParams
+} from "next/navigation";
 import { useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { ICategory } from "../../types";

@@ -25,7 +25,7 @@ export async function unfavoriteHome(formData: FormData) {
     })
 }
 
-export async function getFavorites(userId: string){
+export async function getFavorites(userId: string) {
     return prisma.favorite.findMany({
         where: {
             userId: userId

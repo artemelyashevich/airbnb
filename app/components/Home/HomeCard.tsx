@@ -2,8 +2,14 @@ import Image from "next/image";
 import { IHome } from "../../types";
 import Link from "next/link";
 import { useCountries } from "../../lib/hooks";
-import { FavoriteButton, UnfavoriteButton } from "../Creation/SubmitButtons";
-import { addToFavorite, unfavorite } from "../../actions/favorite-actions";
+import {
+    FavoriteButton,
+    UnfavoriteButton
+} from "../Creation/SubmitButtons";
+import {
+    addToFavorite,
+    unfavorite
+} from "../../actions/favorite-actions";
 
 interface IProps extends IHome {
     userId: string | undefined,

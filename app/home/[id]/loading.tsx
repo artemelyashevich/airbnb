@@ -11,7 +11,7 @@ export default function HomeLoading() {
                     <Skeleton className="h-4 w-1/3 mt-3" />
                 </div>
                 <div className="w-1/3">
-                    <Skeleton className="w-full h-72"/>
+                    <Skeleton className="w-full h-72" />
                 </div>
             </div>
         </div>

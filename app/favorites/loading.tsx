@@ -1,5 +1,3 @@
-import { Skeleton } from "@/components/ui/skeleton";
-import { SkeletonLoading } from "../components/Loading/SkeletonLoading";
 import SkeletonItem from "../components/Loading/SkeletonItem";
 
 export default function FavoritesLoading() {

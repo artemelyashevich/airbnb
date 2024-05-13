@@ -1,4 +1,7 @@
-import { createUser, getUserById } from "@/app/repo/user-repo";
+import {
+    createUser,
+    getUserById
+} from "@/app/repo/user-repo";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
 

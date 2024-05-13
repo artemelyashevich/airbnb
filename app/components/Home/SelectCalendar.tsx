@@ -5,7 +5,6 @@ import 'react-date-range/dist/theme/default.css';
 import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 import { eachDayOfInterval } from 'date-fns';
-import { start } from 'repl';
 
 export function SelectCalendar({
   reservation

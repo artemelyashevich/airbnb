@@ -2,7 +2,6 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { getFavorites } from "../repo/favorite-repo"
 import { redirect } from "next/navigation"
 import HomeCard from "../components/Home/HomeCard"
-import { it } from "node:test"
 
 export default async function Favorites() {
     const { getUser } = getKindeServerSession()
