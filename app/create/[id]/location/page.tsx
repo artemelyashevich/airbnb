@@ -53,7 +53,7 @@ export default function AddressRoute({ params }: { params: { id: string } }) {
                                             <SelectItem key={index} value={item.value}>
                                                 <div className="flex gap-5 items-center">
                                                     <img className="w-8" src={`https://flagsapi.com/${item.value}/flat/64.png`} alt={item.region} />
-                                                    | {item.region}
+                                                    | {item.label}
                                                 </div>
                                             </SelectItem>
                                         ))
